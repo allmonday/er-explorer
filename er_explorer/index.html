@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vis Network | Basic usage</title>
+
+    <script
+      type="text/javascript"
+      src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    ></script>
+
+    <style type="text/css">
+      #mynetwork {
+        width: 100%;
+        height: 800px;
+        border: 1px solid lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Create a simple network with some nodes and edges.</p>
+
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+        $().ready(() => {
+            fetch('./api/data').then(res => res.json()).then(res => {
+                var nodes = new vis.DataSet(res.nodes);
+                var edges = new vis.DataSet(res.edges);
+
+                // create a network
+                var container = document.getElementById("mynetwork");
+                var data = {
+                    nodes: nodes,
+                    edges: edges,
+                };
+                var options = {
+                    layout: {
+                        randomSeed: '0.370981731081512:1733477712137'
+                    }
+                };
+                var network = new vis.Network(container, data, options);
+                console.log(network.getSeed())
+            })
+        })
+    </script>
+  </body>
+</html>

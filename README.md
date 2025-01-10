@@ -1,4 +1,5 @@
 # er-explorer
+
 a visualization tool for entity relationship models based on pydantic / dataclass
 
 ## goal
@@ -8,7 +9,14 @@ abstract the core part from project: ER diagram and use cases, use it as a commo
 help developer quickly figure out the business model and their dependencies.
 
 ## features
+
 - display er diagram based on vis-network
 - click entity and links to show more business details
 - tagged / grouped by different service module
-- describe use cases based on entities.  ( command process, params, related entities )
+- describe use cases based on entities. ( command process, params, related entities )
+
+## Progress
+
+- init: host and display vis-network: `python -m tests.sample`
+- add service module, to switch and highlight sub network
+- add parser to analysis nested pydantic class
